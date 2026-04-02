@@ -19,11 +19,12 @@
           $s_total   = $db->escape($_POST['total']);
           $date      = $db->escape($_POST['date']);
           $s_date    = make_date();
+          $s_user    = $db->escape(current_user()['name']);
 
           $sql  = "INSERT INTO sales (";
-          $sql .= " product_id,codigo,name,clasificacion,categorie_id,qty,price,date";
+          $sql .= " product_id,codigo,name,clasificacion,categorie_id,qty,price,date,user_name";
           $sql .= ") VALUES (";
-          $sql .= "'{$p_id}','{$s_codigo}','{$s_name}','{$s_clas}','{$s_cat}','{$s_qty}','{$s_total}','{$s_date}'";
+          $sql .= "'{$p_id}','{$s_codigo}','{$s_name}','{$s_clas}','{$s_cat}','{$s_qty}','{$s_total}','{$s_date}','{$s_user}'";
           $sql .= ")";
 
                 if($db->query($sql)){

@@ -36,6 +36,7 @@ $sales = find_all_sale();
                 <th class="text-center" style="width: 15%;"> Cantidad</th>
                 <th class="text-center" style="width: 15%;"> Total </th>
                 <th class="text-center" style="width: 15%;"> Fecha </th>
+                <th class="text-center"> Usuario </th>
                 <th class="text-center" style="width: 100px;"> Acciones </th>
              </tr>
             </thead>
@@ -49,6 +50,7 @@ $sales = find_all_sale();
                <td class="text-center"><?php echo (int)$sale['qty']; ?></td>
                <td class="text-center"><?php echo remove_junk($sale['price']); ?></td>
                <td class="text-center"><?php echo $sale['date']; ?></td>
+               <td class="text-center"><?php echo remove_junk($sale['user_name']); ?></td>
                <td class="text-center">
                   <div class="btn-group">
                      <a href="edit_sale.php?id=<?php echo (int)$sale['id'];?>" class="btn btn-warning btn-xs"  title="Edit" data-toggle="tooltip">

@@ -285,7 +285,7 @@ function tableExists($table){
  /*--------------------------------------------------------------*/
  function find_all_sale(){
    global $db;
-   $sql  = "SELECT s.id,s.product_id,s.codigo,s.name,s.clasificacion,s.categorie_id,s.qty,s.price,s.date";
+   $sql  = "SELECT s.id,s.product_id,s.codigo,s.name,s.clasificacion,s.categorie_id,s.qty,s.price,s.date,s.user_name";
    $sql .= " FROM sales s";
    $sql .= " ORDER BY s.date DESC";
    return find_by_sql($sql);
@@ -295,7 +295,7 @@ function tableExists($table){
  /*--------------------------------------------------------------*/
 function find_recent_sale_added($limit){
   global $db;
-  $sql  = "SELECT s.id,s.product_id,s.codigo,s.name,s.clasificacion,s.categorie_id,s.qty,s.price,s.date";
+  $sql  = "SELECT s.id,s.product_id,s.codigo,s.name,s.clasificacion,s.categorie_id,s.qty,s.price,s.date,s.user_name";
   $sql .= " FROM sales s";
   $sql .= " ORDER BY s.date DESC LIMIT ".$db->escape((int)$limit);
   return find_by_sql($sql);

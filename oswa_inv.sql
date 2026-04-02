@@ -99,7 +99,8 @@ CREATE TABLE `sales` (
   `categorie_id` int(11) UNSIGNED DEFAULT NULL,
   `qty` int(11) NOT NULL,
   `price` decimal(25,2) NOT NULL,
-  `date` date NOT NULL
+  `date` date NOT NULL,
+  `user_name` varchar(60) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

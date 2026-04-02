@@ -27,11 +27,12 @@ if(!$sale){
           $s_total   = $db->escape($_POST['total']);
           $date      = $db->escape($_POST['date']);
           $s_date    = date("Y-m-d", strtotime($date));
+          $s_user    = $db->escape(current_user()['name']);
 
           $sql  = "UPDATE sales SET";
           $sql .= " product_id='{$p_id}', codigo='{$s_codigo}', name='{$s_name}',";
           $sql .= " clasificacion='{$s_clas}', categorie_id='{$s_cat}',";
-          $sql .= " qty={$s_qty}, price='{$s_total}', date='{$s_date}'";
+          $sql .= " qty={$s_qty}, price='{$s_total}', date='{$s_date}', user_name='{$s_user}'";
           $sql .= " WHERE id ='{$sale['id']}'";
           $result = $db->query($sql);
           if( $result && $db->affected_rows() === 1){
