@@ -30,7 +30,9 @@ $sales = find_all_sale();
             <thead>
               <tr>
                 <th class="text-center" style="width: 50px;">#</th>
+                <th> Código </th>
                 <th> Nombre del producto </th>
+                <th> Clasificación </th>
                 <th class="text-center" style="width: 15%;"> Cantidad</th>
                 <th class="text-center" style="width: 15%;"> Total </th>
                 <th class="text-center" style="width: 15%;"> Fecha </th>
@@ -41,7 +43,9 @@ $sales = find_all_sale();
              <?php foreach ($sales as $sale):?>
              <tr>
                <td class="text-center"><?php echo count_id();?></td>
+               <td><?php echo remove_junk($sale['codigo']); ?></td>
                <td><?php echo remove_junk($sale['name']); ?></td>
+               <td><?php echo remove_junk($sale['clasificacion']); ?></td>
                <td class="text-center"><?php echo (int)$sale['qty']; ?></td>
                <td class="text-center"><?php echo remove_junk($sale['price']); ?></td>
                <td class="text-center"><?php echo $sale['date']; ?></td>

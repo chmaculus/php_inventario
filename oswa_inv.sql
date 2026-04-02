@@ -93,6 +93,10 @@ INSERT INTO `products` (`id`, `codigo`, `name`, `marca`, `clasificacion`, `quant
 CREATE TABLE `sales` (
   `id` int(11) UNSIGNED NOT NULL,
   `product_id` int(11) UNSIGNED NOT NULL,
+  `codigo` varchar(100) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `clasificacion` varchar(100) DEFAULT NULL,
+  `categorie_id` int(11) UNSIGNED DEFAULT NULL,
   `qty` int(11) NOT NULL,
   `price` decimal(25,2) NOT NULL,
   `date` date NOT NULL

@@ -11,15 +11,19 @@
     validate_fields($req_fields);
         if(empty($errors)){
           $p_id      = $db->escape((int)$_POST['s_id']);
+          $s_codigo  = $db->escape($_POST['s_codigo'] ?? '');
+          $s_name    = $db->escape($_POST['s_name'] ?? '');
+          $s_clas    = $db->escape($_POST['s_clasificacion'] ?? '');
+          $s_cat     = $db->escape((int)($_POST['s_categorie_id'] ?? 0));
           $s_qty     = $db->escape((int)$_POST['quantity']);
           $s_total   = $db->escape($_POST['total']);
           $date      = $db->escape($_POST['date']);
           $s_date    = make_date();
 
           $sql  = "INSERT INTO sales (";
-          $sql .= " product_id,qty,price,date";
+          $sql .= " product_id,codigo,name,clasificacion,categorie_id,qty,price,date";
           $sql .= ") VALUES (";
-          $sql .= "'{$p_id}','{$s_qty}','{$s_total}','{$s_date}'";
+          $sql .= "'{$p_id}','{$s_codigo}','{$s_name}','{$s_clas}','{$s_cat}','{$s_qty}','{$s_total}','{$s_date}'";
           $sql .= ")";
 
                 if($db->query($sql)){

@@ -19,13 +19,19 @@ if(!$sale){
     validate_fields($req_fields);
         if(empty($errors)){
           $p_id      = $db->escape((int)$product['id']);
+          $s_codigo  = $db->escape($product['codigo'] ?? '');
+          $s_name    = $db->escape($product['name'] ?? '');
+          $s_clas    = $db->escape($product['clasificacion'] ?? '');
+          $s_cat     = $db->escape((int)($product['categorie_id'] ?? 0));
           $s_qty     = $db->escape((int)$_POST['quantity']);
           $s_total   = $db->escape($_POST['total']);
           $date      = $db->escape($_POST['date']);
           $s_date    = date("Y-m-d", strtotime($date));
 
           $sql  = "UPDATE sales SET";
-          $sql .= " product_id= '{$p_id}',qty={$s_qty},price='{$s_total}',date='{$s_date}'";
+          $sql .= " product_id='{$p_id}', codigo='{$s_codigo}', name='{$s_name}',";
+          $sql .= " clasificacion='{$s_clas}', categorie_id='{$s_cat}',";
+          $sql .= " qty={$s_qty}, price='{$s_total}', date='{$s_date}'";
           $sql .= " WHERE id ='{$sale['id']}'";
           $result = $db->query($sql);
           if( $result && $db->affected_rows() === 1){

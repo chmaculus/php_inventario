@@ -38,6 +38,10 @@
 
           $html .= "<td id=\"s_name\">".$result['name']."</td>";
           $html .= "<input type=\"hidden\" name=\"s_id\" value=\"{$result['id']}\">";
+          $html .= "<input type=\"hidden\" name=\"s_codigo\" value=\"{$result['codigo']}\">";
+          $html .= "<input type=\"hidden\" name=\"s_name\" value=\"{$result['name']}\">";
+          $html .= "<input type=\"hidden\" name=\"s_clasificacion\" value=\"{$result['clasificacion']}\">";
+          $html .= "<input type=\"hidden\" name=\"s_categorie_id\" value=\"{$result['categorie_id']}\">";
           $html  .= "<td>";
           $html  .= "<input type=\"text\" class=\"form-control\" name=\"price\" value=\"{$result['sale_price']}\">";
           $html  .= "</td>";
