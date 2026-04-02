@@ -20,6 +20,15 @@ SET time_zone = "+00:00";
 -- Base de datos: `oswa_inv`
 --
 
+SET FOREIGN_KEY_CHECKS=0;
+DROP TABLE IF EXISTS `sales`;
+DROP TABLE IF EXISTS `products`;
+DROP TABLE IF EXISTS `categories`;
+DROP TABLE IF EXISTS `media`;
+DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `user_groups`;
+SET FOREIGN_KEY_CHECKS=1;
+
 -- --------------------------------------------------------
 
 --
@@ -66,8 +75,9 @@ INSERT INTO `media` (`id`, `file_name`, `file_type`) VALUES
 CREATE TABLE `products` (
   `id` int(11) UNSIGNED NOT NULL,
   `codigo` varchar(100) DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
+  `codigo_barras` varchar(100) DEFAULT NULL,
   `marca` varchar(100) DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
   `clasificacion` varchar(100) DEFAULT NULL,
   `quantity` varchar(50) DEFAULT NULL,
   `buy_price` decimal(25,2) DEFAULT NULL,
@@ -81,8 +91,8 @@ CREATE TABLE `products` (
 -- Volcado de datos para la tabla `products`
 --
 
-INSERT INTO `products` (`id`, `codigo`, `name`, `marca`, `clasificacion`, `quantity`, `buy_price`, `sale_price`, `categorie_id`, `media_id`, `date`) VALUES
-(1, NULL, 'Filtro de gasolina', NULL, NULL, '100', '5.00', '10.00', 1, 1, '2017-06-16 07:03:16');
+INSERT INTO `products` (`id`, `codigo`, `codigo_barras`, `name`, `marca`, `clasificacion`, `quantity`, `buy_price`, `sale_price`, `categorie_id`, `media_id`, `date`) VALUES
+(1, NULL, NULL, 'Filtro de gasolina', NULL, NULL, '100', '5.00', '10.00', 1, 1, '2017-06-16 07:03:16');
 
 -- --------------------------------------------------------
 

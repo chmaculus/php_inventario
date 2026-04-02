@@ -19,21 +19,22 @@ if(!$product){
     validate_fields($req_fields);
 
    if(empty($errors)){
-       $p_name   = remove_junk($db->escape($_POST['product-title']));
-       $p_codigo = remove_junk($db->escape($_POST['product-codigo']));
-       $p_marca  = remove_junk($db->escape($_POST['product-marca']));
-       $p_clas   = remove_junk($db->escape($_POST['product-clasificacion']));
-       $p_cat    = (int)$_POST['product-categorie'];
-       $p_qty    = remove_junk($db->escape($_POST['product-quantity']));
-       $p_buy    = remove_junk($db->escape($_POST['buying-price']));
-       $p_sale   = remove_junk($db->escape($_POST['saleing-price']));
+       $p_name      = remove_junk($db->escape($_POST['product-title']));
+       $p_codigo    = remove_junk($db->escape($_POST['product-codigo']));
+       $p_cod_bar   = remove_junk($db->escape($_POST['product-codigo-barras']));
+       $p_marca     = remove_junk($db->escape($_POST['product-marca']));
+       $p_clas      = remove_junk($db->escape($_POST['product-clasificacion']));
+       $p_cat       = (int)$_POST['product-categorie'];
+       $p_qty       = remove_junk($db->escape($_POST['product-quantity']));
+       $p_buy       = remove_junk($db->escape($_POST['buying-price']));
+       $p_sale      = remove_junk($db->escape($_POST['saleing-price']));
        if (is_null($_POST['product-photo']) || $_POST['product-photo'] === "") {
          $media_id = '0';
        } else {
          $media_id = remove_junk($db->escape($_POST['product-photo']));
        }
        $query   = "UPDATE products SET";
-       $query  .=" codigo='{$p_codigo}', name='{$p_name}', marca='{$p_marca}', clasificacion='{$p_clas}',";
+       $query  .=" codigo='{$p_codigo}', codigo_barras='{$p_cod_bar}', name='{$p_name}', marca='{$p_marca}', clasificacion='{$p_clas}',";
        $query  .=" quantity='{$p_qty}', buy_price='{$p_buy}', sale_price='{$p_sale}', categorie_id='{$p_cat}', media_id='{$media_id}'";
        $query  .=" WHERE id ='{$product['id']}'";
        $result = $db->query($query);
@@ -76,6 +77,14 @@ if(!$product){
                    <i class="glyphicon glyphicon-barcode"></i>
                   </span>
                   <input type="text" class="form-control" name="product-codigo" placeholder="Código" value="<?php echo remove_junk($product['codigo']);?>">
+               </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                   <i class="glyphicon glyphicon-barcode"></i>
+                  </span>
+                  <input type="text" class="form-control" name="product-codigo-barras" placeholder="Código de barras" value="<?php echo remove_junk($product['codigo_barras']);?>">
                </div>
               </div>
               <div class="form-group">

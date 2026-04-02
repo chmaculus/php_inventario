@@ -11,14 +11,15 @@
    $req_fields = array('product-title','product-categorie','product-quantity','buying-price', 'saleing-price' );
    validate_fields($req_fields);
    if(empty($errors)){
-     $p_name   = remove_junk($db->escape($_POST['product-title']));
-     $p_codigo = remove_junk($db->escape($_POST['product-codigo']));
-     $p_marca  = remove_junk($db->escape($_POST['product-marca']));
-     $p_clas   = remove_junk($db->escape($_POST['product-clasificacion']));
-     $p_cat    = remove_junk($db->escape($_POST['product-categorie']));
-     $p_qty    = remove_junk($db->escape($_POST['product-quantity']));
-     $p_buy    = remove_junk($db->escape($_POST['buying-price']));
-     $p_sale   = remove_junk($db->escape($_POST['saleing-price']));
+     $p_name      = remove_junk($db->escape($_POST['product-title']));
+     $p_codigo    = remove_junk($db->escape($_POST['product-codigo']));
+     $p_cod_bar   = remove_junk($db->escape($_POST['product-codigo-barras']));
+     $p_marca     = remove_junk($db->escape($_POST['product-marca']));
+     $p_clas      = remove_junk($db->escape($_POST['product-clasificacion']));
+     $p_cat       = remove_junk($db->escape($_POST['product-categorie']));
+     $p_qty       = remove_junk($db->escape($_POST['product-quantity']));
+     $p_buy       = remove_junk($db->escape($_POST['buying-price']));
+     $p_sale      = remove_junk($db->escape($_POST['saleing-price']));
      if (is_null($_POST['product-photo']) || $_POST['product-photo'] === "") {
        $media_id = '0';
      } else {
@@ -26,9 +27,9 @@
      }
      $date    = make_date();
      $query  = "INSERT INTO products (";
-     $query .=" codigo,name,marca,clasificacion,quantity,buy_price,sale_price,categorie_id,media_id,date";
+     $query .=" codigo,codigo_barras,name,marca,clasificacion,quantity,buy_price,sale_price,categorie_id,media_id,date";
      $query .=") VALUES (";
-     $query .=" '{$p_codigo}', '{$p_name}', '{$p_marca}', '{$p_clas}', '{$p_qty}', '{$p_buy}', '{$p_sale}', '{$p_cat}', '{$media_id}', '{$date}'";
+     $query .=" '{$p_codigo}', '{$p_cod_bar}', '{$p_name}', '{$p_marca}', '{$p_clas}', '{$p_qty}', '{$p_buy}', '{$p_sale}', '{$p_cat}', '{$media_id}', '{$date}'";
      $query .=")";
      $query .=" ON DUPLICATE KEY UPDATE name='{$p_name}'";
      if($db->query($query)){
@@ -71,6 +72,14 @@
                    <i class="glyphicon glyphicon-barcode"></i>
                   </span>
                   <input type="text" class="form-control" name="product-codigo" placeholder="Código">
+               </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                   <i class="glyphicon glyphicon-barcode"></i>
+                  </span>
+                  <input type="text" class="form-control" name="product-codigo-barras" placeholder="Código de barras">
                </div>
               </div>
               <div class="form-group">
